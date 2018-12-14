@@ -2,7 +2,7 @@ ThreadPool
 ========
 easy and simple use for Android.<br/>
 
-ThreadPool in 3 steps
+ThreadPool in 4 steps
 -------------------
 1. New a ThreadPool instance:
 
@@ -41,6 +41,35 @@ ThreadPool in 3 steps
             }
         });
 	```
+4. The Job can be cancelled if it takes too long time
+
+   ```java
+    Future<?> task = mThreadPool.submit(new ThreadPool.Job<Object>() {
+            @Override
+            public Object run(ThreadPool.JobContext jc) {
+                int i = 1000;
+                while (i > 0) {
+                    if (jc.isCancelled()) {
+                        //Job cancelled
+                        return null;
+                    }
+                    //The Job do many things
+                    try {
+                        Thread.sleep(1000);
+                    } catch (InterruptedException e) {
+                        e.printStackTrace();
+                    }
+                    i--;
+                }
+                return null;
+            }
+        });
+
+        /*.......*/
+
+        //cancel
+        task.cancel();
+   ```
 
 Add ThreadPool to your project
 ----------------------------
