@@ -38,6 +38,9 @@ ThreadPool in 4 steps
     mThreadPool.submit(job, new FutureListener<String>() {
             @Override
             public void onFutureDone(Future<String> future) {
+                //we can get Job result here.
+
+                String result = future.get();
             }
         });
 	```
