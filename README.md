@@ -1,9 +1,9 @@
 # ThreadPool
 
-#local.properties:
-#bintray.user=xxx
-#bintray.apikey=xxx
+#local.properties:   
+#bintray.user=xxx   
+#bintray.apikey=xxx 
 
-#console
-#./gradlew install
-#./gradlew bintrayUpload
+#console    
+#./gradlew install  
+#./gradlew bintrayUpload    
